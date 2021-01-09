@@ -18,10 +18,10 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (inventory != null && inventory.quantizedEnergy > 5)
+        if (inventory != null && inventory.quantizedEnergy > 15)
         {
             Instantiate(vanguard, respawn);
-            inventory.quantizedEnergy -= 5;
+            inventory.quantizedEnergy -= 12;
         }
     }
 }

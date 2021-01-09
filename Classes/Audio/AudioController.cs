@@ -2,11 +2,10 @@
 
 public class AudioController : MonoBehaviour
 {
-    [SerializeField] AudioClip[] footSteps = null;
+    [SerializeField] AudioClip[] footSteps;
 
     private AudioSource footStepSource;
     private InputController inputController;
-    private Vector2 value;
 
     private bool canPlay;
 
@@ -23,19 +22,19 @@ public class AudioController : MonoBehaviour
 
     private void Update()
     {
-        PlaySounds();
+        Vector2 value = new Vector2(inputController.MovementHorizontal(), inputController.MovementVertical());
+        PlaySounds(value);
     }
 
-    private void PlaySounds()
+    protected void PlaySounds(Vector2 value)
     {
-        value = new Vector2(inputController.MovementHorizontal(), inputController.MovementVertical());
         if (value.magnitude > 0.7f)
         {
-            PlayFootSteps(1.5f - value.magnitude, value.magnitude);
+            PlayFootSteps(1.5f - value.magnitude, value.magnitude, footStepSource);
         }
     }
 
-    public void PlayFootSteps(float delay, float volume)
+    protected void PlayFootSteps(float delay, float volume, AudioSource audioSource)
     {
         Debug.Log("Playing");
         if (!canPlay)
@@ -50,6 +49,6 @@ public class AudioController : MonoBehaviour
         canPlay = false;
 
         AudioClip footStep = footSteps[Random.Range(0, footSteps.Length)];
-        footStepSource.PlayOneShot(footStep, volume);
+        audioSource.PlayOneShot(footStep, volume);
     }
 }
