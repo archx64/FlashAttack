@@ -8,12 +8,12 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody rb;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         AddForce();
     }

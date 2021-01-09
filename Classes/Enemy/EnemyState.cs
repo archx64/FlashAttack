@@ -3,18 +3,24 @@ using UnityEngine.AI;
 
 public class EnemyState : MonoBehaviour
 {
-    public float hitPoints;
+    private float hitPoints;
     private Rigidbody[] rigibodies;
     private Animator animator;
     private NavMeshAgent navMeshAgent;
 
-    void Start()
+
+    private void Awake()
     {
-        hitPoints = 100;
         rigibodies = GetComponentsInChildren<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        DisableRagDoll(true);
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+    }
+
+    private void Start()
+    {
+        DisableRagDoll(true);
+        hitPoints = 100;
     }
 
 
@@ -23,8 +29,6 @@ public class EnemyState : MonoBehaviour
         if (hitPoints <= 0)
             DeadCheck();
 
-        //Vector2 value = transform.InverseTransformDirection(navMeshAgent.velocity);
-        //PlaySounds(value);
     }
 
     private void DeadCheck()
@@ -34,6 +38,7 @@ public class EnemyState : MonoBehaviour
         navMeshAgent.speed = 0;
         navMeshAgent.angularSpeed = 0;
     }
+
 
     private void DisableRagDoll(bool value)
     {
