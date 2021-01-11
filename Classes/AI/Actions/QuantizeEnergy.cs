@@ -38,13 +38,13 @@ public class QuantizeEnergy : GoapAction
     {
         if (startTime == 0)
         {
-            Debug.Log("Starting: " + actionName);
+            //Debug.Log("Starting: " + actionName);
             startTime = Time.time;
         }
 
         if (Time.time - startTime > workDuration)
         {
-            Debug.Log("Finished: " + actionName);
+            //Debug.Log("Finished: " + actionName);
             GetComponent<Inventory>().rawEnergy -= 2;
             GetComponent<Inventory>().quantizedEnergy += 2;
             completed = true;

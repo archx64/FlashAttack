@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(AudioSource))]
 public class QuantumEnergy : MonoBehaviour
 {
     private Transform playerTorso;
     private Rigidbody rb;
-    private AudioSource audioSource;
 
     private void Awake()
     {
-        playerTorso = GameObject.FindWithTag("Player").transform.Find("Torso");
-        audioSource = GetComponent<AudioSource>();
+        playerTorso = GameObject.FindWithTag("PlayerTorso").transform;
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void Start()
-    {
-        audioSource.PlayOneShot(GameManager.Instance.AudioHolder.quantum);
     }
 
     private void FixedUpdate()
     {
         Vector3 direction = playerTorso.transform.position - transform.position;
-        rb.AddForce(direction * 100);
+        rb.AddForce(direction * 0.1f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayerTorso"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -76,7 +76,7 @@ public sealed class GoapAgent : MonoBehaviour
             HashSet<KeyValuePair<string, object>> goal = dataProvider.CreateGoalState();
 
             // Plan
-            Queue<GoapAction> plan = planner.plan(gameObject, availableActions, worldState, goal);
+            Queue<GoapAction> plan = planner.Plan(gameObject, availableActions, worldState, goal);
             if (plan != null)
             {
                 // we have a plan, hooray!
@@ -90,7 +90,7 @@ public sealed class GoapAgent : MonoBehaviour
             else
             {
                 // ugh, we couldn't get a plan
-                Debug.Log("Failed Plan: " + goal);
+                //Debug.Log("Failed Plan: " + goal);
                 dataProvider.PlanFailed(goal);
                 fsm.PopState(); // move back to IdleAction state
                 fsm.PushState(idleState);
@@ -108,7 +108,7 @@ public sealed class GoapAgent : MonoBehaviour
             GoapAction action = currentActions.Peek();
             if (action.RequiresInRange() && action.target == null)
             {
-                Debug.Log("Fatal error: Action requires a target but has none. Planning failed. You did not assign the target in your Action.checkProceduralPrecondition()");
+                //Debug.Log("Fatal error: Action requires a target but has none. Planning failed. You did not assign the target in your Action.checkProceduralPrecondition()");
                 fsm.PopState(); // move
                 fsm.PopState(); // perform
                 fsm.PushState(idleState);
@@ -116,7 +116,7 @@ public sealed class GoapAgent : MonoBehaviour
             }
 
             // get the agent to move itself
-            Debug.Log("Move to do: " + action.actionName);
+            //Debug.Log("Move to do: " + action.actionName);
             if (dataProvider.MoveAgent(action))
             {
                 fsm.PopState();
@@ -205,7 +205,7 @@ public sealed class GoapAgent : MonoBehaviour
         {
             availableActions.Add(a);
         }
-        Debug.Log("Found actions: " + actions);
+        //Debug.Log("Found actions: " + actions);
     }
 
 }

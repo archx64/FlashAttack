@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyState : MonoBehaviour
 {
-    private float hitPoints;
+    public float hitPoints;
     private Rigidbody[] rigibodies;
     private Animator animator;
     private NavMeshAgent navMeshAgent;
@@ -14,7 +14,6 @@ public class EnemyState : MonoBehaviour
         rigibodies = GetComponentsInChildren<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-
     }
 
     private void Start()
@@ -27,8 +26,9 @@ public class EnemyState : MonoBehaviour
     private void Update()
     {
         if (hitPoints <= 0)
+        {
             DeadCheck();
-
+        }
     }
 
     private void DeadCheck()
@@ -38,7 +38,6 @@ public class EnemyState : MonoBehaviour
         navMeshAgent.speed = 0;
         navMeshAgent.angularSpeed = 0;
     }
-
 
     private void DisableRagDoll(bool value)
     {

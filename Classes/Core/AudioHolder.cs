@@ -3,11 +3,11 @@
 public class AudioHolder : MonoBehaviour
 {
     public AudioClip[] footSteps;
-    public AudioClip quantum;
+    public AudioClip[] quantum;
 
     private void Awake()
     {
         footSteps = Resources.LoadAll<AudioClip>("Audio/Footsteps");
-        quantum = Resources.Load<AudioClip>("Audio/FuturisticGunSoundFX/Laser/laser11");
+        quantum = Resources.LoadAll<AudioClip>("Audio/Future/Laser");
     }
 }

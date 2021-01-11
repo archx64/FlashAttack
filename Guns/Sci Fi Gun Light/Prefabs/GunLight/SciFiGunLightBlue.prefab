@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 6132453272082269723}
   m_Layer: 0
   m_Name: EnergySpawn
-  m_TagString: Untagged
+  m_TagString: EnergySpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

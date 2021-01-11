@@ -40,13 +40,13 @@ public class PickupRawEnergy : GoapAction
     {
         if (startTime == 0)
         {
-            Debug.Log("Starting: " + actionName);
-            startTime = Time.time;
+            //Debug.Log("Starting: " + actionName);
+            //startTime = Time.time;
         }
 
         if (Time.time - startTime > workDuration)
         {
-            Debug.Log("Finished: " + actionName);
+            //Debug.Log("Finished: " + actionName);
             GetComponent<Inventory>().rawEnergy += 5;
             windmill.rawEnergy -= 5;
             completed = true;

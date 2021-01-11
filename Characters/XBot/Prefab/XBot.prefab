@@ -212,12 +212,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8907649824513467355}
   - component: {fileID: 6789156673425823866}
+  - component: {fileID: 2946267104711153228}
   - component: {fileID: 152655315851897799}
   - component: {fileID: 162012138325519340}
   - component: {fileID: 6512043991090021978}
   - component: {fileID: 4514895270847693173}
   - component: {fileID: 6023016726925371009}
-  - component: {fileID: 2946267104711153228}
   m_Layer: 0
   m_Name: XBot
   m_TagString: Untagged
@@ -263,6 +263,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &2946267104711153228
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519376731482229141}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.3, z: 0}
 --- !u!114 &152655315851897799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,21 +347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 100
-  value: {x: 0, y: 0}
---- !u!136 &2946267104711153228
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519376731482229141}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.3, z: 0}
 --- !u!54 &11892093565726137
 Rigidbody:
   m_ObjectHideFlags: 0

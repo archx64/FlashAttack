@@ -39,13 +39,13 @@ public class DeliverRawEnergy : GoapAction
     {
         if (startTime == 0)
         {
-            Debug.Log("Starting: " + actionName);
+            //Debug.Log("Starting: " + actionName);
             startTime = Time.time;
         }
 
         if (Time.time - startTime > workDuration)
         {
-            Debug.Log("Finished: " + actionName);
+            //Debug.Log("Finished: " + actionName);
             inv.rawEnergy += 3;
             completed = true;
         }
