@@ -6,9 +6,14 @@ public class QuantumEnergy : MonoBehaviour
     private Transform playerTorso;
     private Rigidbody rb;
 
+    private SceneLoader sceneLoader;
+
+    public static float damageDealt;
+
     private void Awake()
     {
         playerTorso = GameObject.FindWithTag("PlayerTorso").transform;
+        sceneLoader = GameManager.Instance.SceneLoader;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -22,6 +27,14 @@ public class QuantumEnergy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerTorso"))
         {
+            damageDealt += 10;
+
+            if(damageDealt > 100)
+            {
+                damageDealt = 0;
+                sceneLoader.SceneToLoad(2);
+            }
+
             Destroy(gameObject);
         }
     }

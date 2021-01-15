@@ -8,22 +8,28 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody rb;
 
+    private CharacterController player;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        player = GameObject.FindWithTag("Player").GetComponent<CharacterController>();
     }
 
     private void FixedUpdate()
     {
         AddForce();
+        Physics.IgnoreCollision(transform.GetChild(0).GetComponent<CapsuleCollider>(), player);
     }
+
+
 
     private void AddForce()
     {
         if (isShell)
         {
             rb.AddForce(transform.right * shell);
-        Destroy(gameObject, 10);
+            Destroy(gameObject, 10);
         }
         else
         {

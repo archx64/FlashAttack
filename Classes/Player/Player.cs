@@ -14,10 +14,9 @@ public class Player : MonoBehaviour
     private Animator animator;
     private readonly AnimationController animationController = new AnimationController();
 
-    private Transform leftElbow;
-    private Transform rightElbow;
-
     private CharacterController characterController;
+
+    private Transform endGame;
 
     private void Awake()
     {
@@ -25,10 +24,22 @@ public class Player : MonoBehaviour
  
         animator = GameObject.Find("Jeniffer").GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        
+
+        endGame = GameObject.FindWithTag("EndGame").transform;
     }
 
+    private void DistanceCheck()
+    {
+        if(Vector3.Distance(endGame.position, transform.position) < 2)
+        {
+            GameManager.Instance.SceneLoader.SceneToLoad(1);
+        }
+    }
 
+    private void Update()
+    {
+        DistanceCheck();
+    }
 
     private void FixedUpdate()
     {

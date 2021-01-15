@@ -4,14 +4,14 @@ public class FootSteps : MonoBehaviour
 {
     private AudioSource footStepSource;
     private InputController inputController;
-    private AudioHolder audioHolder;
+    private ResourceHolder audioHolder;
 
     private bool canPlay = false;
 
     private void Awake()
     {
         inputController = GameManager.Instance.InputController;
-        audioHolder = GameManager.Instance.AudioHolder;
+        audioHolder = GameManager.Instance.ResourceHolder;
     }
 
     private void Start()

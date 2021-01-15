@@ -20,7 +20,8 @@ public class GameManager
                 m_Instance.gameObject.AddComponent<ThirdPersonCamera>();
                 m_Instance.gameObject.AddComponent<Timer>();
                 m_Instance.gameObject.AddComponent<EnemySpawner>();
-                m_Instance.gameObject.AddComponent<AudioHolder>();
+                m_Instance.gameObject.AddComponent<ResourceHolder>();
+                m_Instance.gameObject.AddComponent<SceneLoader>();
             }
             return m_Instance;
         }
@@ -91,16 +92,29 @@ public class GameManager
         }
     }
 
-    private AudioHolder m_AudioHolder;
-    public AudioHolder AudioHolder
+    private ResourceHolder m_ResourceHolder;
+    public ResourceHolder ResourceHolder
     {
         get
         {
-            if (m_AudioHolder == null)
+            if (m_ResourceHolder == null)
             {
-                m_AudioHolder = gameObject.GetComponent<AudioHolder>();
+                m_ResourceHolder = gameObject.GetComponent<ResourceHolder>();
             }
-            return m_AudioHolder;
+            return m_ResourceHolder;
+        }
+    }
+
+    private SceneLoader m_SceneLoader;
+    public SceneLoader SceneLoader
+    {
+        get
+        {
+            if(m_SceneLoader==null)
+            {
+                m_SceneLoader = gameObject.GetComponent<SceneLoader>();
+            }
+            return m_SceneLoader;
         }
     }
 

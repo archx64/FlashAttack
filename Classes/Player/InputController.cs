@@ -19,7 +19,7 @@ public class InputController : MonoBehaviour
 
     private void QuitCheck()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
@@ -27,11 +27,14 @@ public class InputController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movementVertical = movementJoyStick.Vertical;
-        movementHorizontal = movementJoyStick.Horizontal;
-        cameraHorizontal = cameraJoyStick.Horizontal;
-        cameraVertical += cameraJoyStick.Vertical * 0.5f;
-        cameraVertical = Mathf.Clamp(cameraVertical, -10, 10);
+        if (movementJoyStick != null && cameraJoyStick != null)
+        {
+            movementVertical = movementJoyStick.Vertical;
+            movementHorizontal = movementJoyStick.Horizontal;
+            cameraHorizontal = cameraJoyStick.Horizontal;
+            cameraVertical += cameraJoyStick.Vertical * 0.5f;
+            cameraVertical = Mathf.Clamp(cameraVertical, -10, 10);
+        }
 
         QuitCheck();
     }

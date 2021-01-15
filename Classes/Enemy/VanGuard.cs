@@ -29,10 +29,12 @@ public class VanGuard : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         animator = GetComponentInChildren<Animator>();
         bullet = Resources.Load<GameObject>("Bullet/QuantumEnergy");
-        audioClips = GameManager.Instance.AudioHolder.quantum;
+        audioClips = GameManager.Instance.ResourceHolder.quantum;
         audioSource = transform.Find("EnergySource").gameObject.GetComponent<AudioSource>();
         hitPoints = GetComponent<EnemyState>().hitPoints;
     }
+
+
 
     private void Start()
     {
@@ -53,6 +55,8 @@ public class VanGuard : MonoBehaviour
 
         animationController.ControlAnimator(animator, forward, strafe);
 
+
+        Debug.Log(hitPoints);
         GunFire();
     }
 
@@ -71,16 +75,18 @@ public class VanGuard : MonoBehaviour
     {
         if (timeBetweenShots <= 0)
         {
-            audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)], 1);
-            Instantiate(bullet, quantumSpawn.position, quantumSpawn.rotation);
+
+            if(quantumSpawn != null)
+            {
+                audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)], 1);
+                Instantiate(bullet, quantumSpawn.position, quantumSpawn.rotation);
+            }
             timeBetweenShots = startTimeBetweenShots;
         }
         else
         {
             timeBetweenShots -= Time.deltaTime;
         }
-
-        Debug.Log(timeBetweenShots);
     }
 
 }
